@@ -374,7 +374,7 @@ char * Des::Encrypt(char *Text1, int faulty = 0)
 			}
 		}
 	}
-  
+  delete Text;
   return(final);
 }
 
@@ -426,6 +426,7 @@ char * Des::Decrypt(char *Text1)
 		}
   }   
   final[mc]='\0';
+  delete Text;
   return(final);
 }
 
@@ -446,8 +447,8 @@ int main()
 
 	Des d1, d2;
 	char *str = new char[20000];
-	char *str1 = new char[20000];
-	char *str2 = new char[20000];
+	char *str1;
+	char *str2;
 	
 	// Forming a random string......................
 	// Readable ASCII Characters list[A-Z, a-z, 0-9, Symbols] 
@@ -610,6 +611,7 @@ int main()
 	// cout<<"\n";
 	// for(int i=0;i<32;i++)
 	// 	cout<<FaultyR[0][i];
+	delete str;
 
 	return 0;
 }
