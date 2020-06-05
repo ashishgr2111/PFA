@@ -2,22 +2,16 @@
 #include "lookup.h"
 #include<bits/stdc++.h>
 #include "des.h"
+using namespace std;
+using namespace round_func;
+
+// strlen function to find length of a string ending with \r\n
 int strlen(char *str){
 	int len=0;
-	while(*str!='\n')len++,str++;
+	while(*str!='\r'||*(str+1)!='\n')len++,str++;
 	return len;
 }
-using namespace std;
-int key[64]={
-	0,0,0,1,0,0,1,1,
-	0,0,1,1,0,1,0,0,
-	0,1,0,1,0,1,1,1,
-	0,1,1,1,1,0,0,1,
-	1,0,0,1,1,0,1,1,
-	1,0,1,1,1,1,0,0,
-	1,1,0,1,1,1,1,1,
-	1,1,1,1,0,0,0,1
-};
+
 
 
 /*
@@ -30,92 +24,42 @@ vector<int *> FaultyL, FaultyR;
 // Initial Permutation Function
 void Des::IP()
 {
-	int k=58,i;
-	for(i=0;i < 32;i++)
-	{
-		ip[i]=total[k-1];
-		if(k-8>0)  k=k-8;
-		else       k=k+58;
-	}
-	k=57;
-	for( i=32;i < 64;i++)
-	{
-		ip[i]=total[k-1];
-		if(k-8 > 0)   k=k-8;
-		else	    k=k+58;
+	for(int i=0;i<64;i++){
+		ip[i]= total[ip_table[i]-1];
 	}
 }
+
+// Applying Initial Permutation inverseIP at the end....................
+void Des::inverseIP()
+{
+	for(int i=0;i<64;i++){
+		inv_ip[ip_table[i]-1] = temp[i]; 
+	}
+}
+
 // PC1 function of round key generation function.....................
-void Des::PermChoice1()
-{
-	int k=57,i;
-	for(i=0;i < 28;i++)
-	{
-		pc1[i]=key[k-1];
-		if(k-8 > 0)    k=k-8;
-		else	     k=k+57;
+void Des::PermChoice1(){
+	for(int i=0;i<56;i++){
+		pc1[i] = key[keygen::pc1_table[i]-1];
 	}
-	k=63;
-	for( i=28;i < 52;i++)
-	{
-		pc1[i]=key[k-1];
-		if(k-8 > 0)    k=k-8;
-		else         k=k+55;
-	}
-	k=28;
-	for(i=52;i < 56;i++)
-	{
-		pc1[i]=key[k-1];
-		k=k-8;
-	}
-
 }
+
 // Expansion E(A) function of DES f-function.......................
-void Des::Expansion()
-{
-	int exp[8][6],i,j,k;
-	for(i=0;i < 8;i++)
-	{
-		for( j=0;j < 6;j++)
-		{
-			if((j!=0)||(j!=5))
-			{
-				k=4*i+j;
-				exp[i][j]=right[k-1];
-			}
-			if(j==0)
-			{
-				k=4*i;
-				exp[i][j]=right[k-1];
-			}
-			if(j==5)
-			{
-				k=4*i+j;
-				exp[i][j]=right[k-1];
-			}
-		}
-	}
-	exp[0][0]=right[31];
-	exp[7][5]=right[0];
-
-	k=0;
-	for(i=0;i < 8;i++)
-	for(j=0;j < 6;j++)
-	expansion[k++]=exp[i][j];
+// Expands 32 bit right subpart to 48 bit
+void Des::Expansion(){
+	for(int i=0;i<48;i++){
+		expansion[i] = right[expansion_table[i]-1];
+	}	
 }
+
 // Key Generation PC2 function of DES Block Cipher.................
 void Des::PermChoice2()
 {
-	int per[56],i,k;
-	for(i=0;i < 28;i++) per[i]=ck[i];
-	for(k=0,i=28;i < 56;i++) per[i]=dk[k++];
+	int per[56];
+	for(int i=0;i<28;i++)per[i]=ck[i],per[i+28]=dk[i];
 
-	z[0]=per[13];z[1]=per[16];z[2]=per[10];z[3]=per[23];z[4]=per[0];z[5]=per[4];z[6]=per[2];z[7]=per[27];
-	z[8]=per[14];z[9]=per[5];z[10]=per[20];z[11]=per[9];z[12]=per[22];z[13]=per[18];z[14]=per[11];z[15]=per[3];
-	z[16]=per[25];z[17]=per[7];z[18]=per[15];z[19]=per[6];z[20]=per[26];z[21]=per[19];z[22]=per[12];z[23]=per[1];
-	z[24]=per[40];z[25]=per[51];z[26]=per[30];z[27]=per[36];z[28]=per[46];z[29]=per[54];z[30]=per[29];z[31]=per[39];
-	z[32]=per[50];z[33]=per[46];z[34]=per[32];z[35]=per[47];z[36]=per[43];z[37]=per[48];z[38]=per[38];z[39]=per[55];
-	z[40]=per[33];z[41]=per[52];z[42]=per[45];z[43]=per[41];z[44]=per[49];z[45]=per[35];z[46]=per[28];z[47]=per[31];
+	for(int i=0;i<48;i++)
+		round_key[i] = per[keygen::pc2_table[i]-1];
 }
 
 /* 
@@ -130,85 +74,32 @@ void Des::xor_key(int round, int type)
 		 xor1[i]=expansion[i]^keyi[round][i];
 }
 
-// Substitution in DES f-function.............................
-void Des::substitution()
-{
-	int a[8][6],k=0,i,j,p,q,g=0,v;
-
-	for(i=0;i < 8;i++)
-	{
-		for(j=0;j<6;j++)
-		{
-			a[i][j]=xor1[k++];
+// Substitution in DES f-function. 6*4 function
+void Des::substitution(){
+	int idx=0;
+	for(int i=0;i<48;i+=8){
+		int s_box_num = i/8,row=xor1[i]<<1+xor1[i+5],col=0; 
+		for(int j=1;j<5;j++){
+			col += col<<1+xor1[i+j];
 		}
-	}
-
-	for( i=0;i < 8;i++)
-	{
-		p=1;q=0;
-		k=(a[i][0]*2)+(a[i][5]*1);
-		j=4;
-		while(j > 0)
-		{
-			q=q+(a[i][j]*p);
-			p=p*2;
-			j--;
-		}
-
-		v = s[i][k][q];  // Substitution table lookup value assigned........
-
-		int d,i=3,a[4];
-		while(v > 0)
-		{
-			d=v%2;
-			a[i--]=d;
-			v=v/2;
-		}
-		while(i >= 0)
-		{
-			a[i--]=0;
-		}
-
-		for(i=0;i < 4;i++)
-		sub[g++]=a[i];
+		int num = round_func::s[s_box_num][row][col];
+		for(int i=0;i<4;i++)
+			sub[s_box_num*4+3-i]=num&1,num>>=1;
 	}
 }
+
 // Applying permutation in the DES f- function...............
-void Des::permutation()
-{
-	p[0]=sub[15];p[1]=sub[6];p[2]=sub[19];p[3]=sub[20];p[4]=sub[28];p[5]=sub[11];p[6]=sub[27];p[7]=sub[16];
-	p[8]=sub[0];p[9]=sub[14];p[10]=sub[22];p[11]=sub[25];p[12]=sub[4];p[13]=sub[17];p[14]=sub[30];p[15]=sub[9];
-	p[16]=sub[1];p[17]=sub[7];p[18]=sub[23];p[19]=sub[13];p[20]=sub[31];p[21]=sub[26];p[22]=sub[2];p[23]=sub[8];
-	p[24]=sub[18];p[25]=sub[12];p[26]=sub[29];p[27]=sub[5];p[28]=sub[21];p[29]=sub[10];p[30]=sub[3];p[31]=sub[24];
+void Des::permutation(){
+	for(int i=0;i<32;i++){
+		p[i]=sub[round_func::permutation_table[i]-1];
+	}
 }
+
 // Xor with left subbits of previous rounds..................
 void Des::xor_left()
 {
 	for(int i=0;i < 32;i++){
 		xor2[i]=left[i]^p[i];
-	}
-}
-// Applying Initial Permutation inverseIP at the end....................
-void Des::inverseIP()
-{
-	int p=40,q=8,k1,k2,i,j;
-	for(i=0;i < 8;i++)
-	{
-		k1=p;k2=q;
-		for(j=0;j < 8;j++)
-		{
-			if(j%2==0)
-			{
-				inv[i][j]=temp[k1-1];
-				k1=k1+8;
-			}
-			else if(j%2!=0)
-			{
-				inv[i][j]=temp[k2-1];
-				k2=k2+8;
-			}
-		}
-		p=p-1;q=q-1;
 	}
 }
 
@@ -257,20 +148,19 @@ Output is a unsigned unsigned character stream after running des algorithm
 char * Des::run_des(char *Text,int type, bool faulty = 0)
 {
 	int len = strlen(Text);
-	int size = ceil(len*8 / 64)*64; // pad stream to nearest multiple of 64 bits.
+	int size = ceil(len*8 / 64.0)*64; // pad stream to nearest multiple of 64 bits.
 	int *Text1 = new int[size],idx=0;
-	
-	//convert unsigned character stream to bit stream for easy processing
+	//convert character stream to bit stream for easy processing
 	for(int i=1;i<=len;i++){
-		int ch=(int)Text[i-1];
+		//int ch=(i<=len)?(int)Text[i-1]:' ';
+		int ch = Text[i-1];
+		//cout<<ch;//Text[i-1];
 		for(int j=0;j<8;j++){
-			Text1[7*i-j]=ch&1;
+			Text1[8*i-j-1]=ch&1;
 			ch>>=1;
 		}
-	}
-	
+	}	
 	keygen();
-	//cout<<size;
 	for(int nB=0;nB < size / 64; nB++){
 
 		memcpy(total,Text1+nB*64,sizeof(total));
@@ -298,21 +188,20 @@ char * Des::run_des(char *Text,int type, bool faulty = 0)
 		}
 
 		memcpy(temp,right,sizeof(temp));
-		memcpy(temp,left,sizeof(left));
+		memcpy(temp+32,left,sizeof(left));
 		
 		inverseIP();
 		int k = 128,d = 0;
-		for (int i = 0; i < 8; i++)
-		{
+		for (int i = 0; i < 8; i++){
 			for (int j = 0; j < 8; j++){
-				d = d + inv[i][j] * k;
-				k = k / 2;
+				 d = d + inv_ip[i*8+j] * k;
+				 k = k / 2;
 			}
 			final[idx++] = (char)d;
 			k = 128;d = 0;
 		}
 	}
-	final[idx] = '\n';
+	final[idx++] = '\r',final[idx++]='\n';
 	delete Text1;
 	return(final);
 }
@@ -362,6 +251,6 @@ void Des::keygen()
 		}
 		PermChoice2();
 		for (i = 0; i < 48; i++)
-			keyi[round - 1][i] = z[i];
+			keyi[round - 1][i] = round_key[i];
 	}
 }

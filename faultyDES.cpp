@@ -17,7 +17,7 @@ int main()
 
 	Des d1, d2;
 	//char *str =(char *)"kdsjvsjfdfsiobnbnfvjnfvsfdvfkdlnv";
-	char *str = (char*)"kdsjvsjf\n";
+	char *str = (char *)"kdsjvsjfdfsiobnbnfvjnfvsfdvfkdlnv\r\n";
 	//cout<<str;
 	char *str1;
 	char *str2;
@@ -36,9 +36,10 @@ int main()
 	// for (int i = 0; i < 64; i++) // Using ~20000 as string length....
 	// 	str[i] = (char)((rand() % (upper - lower + 1)) + lower);
 	str1=d1.Encrypt(str,0);
-	str2 = d1.Decrypt(str1);
-	cout<<str2;
+	cout<<str1<<"*";
+	str2 = d1.Decrypt(str1);cout<<str2;
 	tt=0;
+	return 0;
 	while(tt--){
 
 		for(int i=0;i<19900;i++) // Using ~20000 as string length....
