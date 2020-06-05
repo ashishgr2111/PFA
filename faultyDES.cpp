@@ -470,7 +470,7 @@ int main()
 		str1 = d1.Encrypt(str, 0); // Without fault
 
 		// cout<<"Input String :\n"<<str<<"\n";
-		// cout<<"\nOutput Text :\n"<< d2.Decrypt(str1)<< endl;
+		// cout<<"\nDecrypted plain text :\n"<< d2.Decrypt(str1)<< endl;
 		
 		Des d3;
 		str2 = d3.Encrypt(str, 1); // With fault
