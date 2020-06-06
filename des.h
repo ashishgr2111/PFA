@@ -20,7 +20,7 @@ public:
     void permutation();
     void xor_left();
     void keygen();
-    char *run_des(char *,int, bool);
-    char *Encrypt(char *, int);
-    char *Decrypt(char *);
+    char *run_des(const char *,int, bool);
+    char *Encrypt(const char *, bool);
+    char *Decrypt(const char *);
 };

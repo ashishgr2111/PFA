@@ -1,4 +1,11 @@
 
+/* This file contains a general implementation of des encryption scheme.
+To run the encryption algorithm call the functions-
+1) char *Encrypt(const char *, bool)  - for encryption of a plain text
+2) char *Decrypt(const char *); - for decryption 
+**** The character stream passed to these functions should end with \r\n delimiter.
+*/
+
 #include "lookup.h"
 #include<bits/stdc++.h>
 #include "des.h"
@@ -6,7 +13,7 @@ using namespace std;
 using namespace round_func;
 
 // strlen function to find length of a string ending with \r\n
-int strlen(char *str){
+int strlen(const char *str){
 	int len=0;
 	while(*str!='\r'||*(str+1)!='\n')len++,str++;
 	return len;
@@ -25,7 +32,7 @@ vector<int *> FaultyL, FaultyR;
 void Des::IP()
 {
 	for(int i=0;i<64;i++){
-		ip[i]= total[ip_table[i]-1];
+		ip[i]= total[ip_table[i]-1];		
 	}
 }
 
@@ -49,7 +56,7 @@ void Des::PermChoice1(){
 void Des::Expansion(){
 	for(int i=0;i<48;i++){
 		expansion[i] = right[expansion_table[i]-1];
-	}	
+	} 
 }
 
 // Key Generation PC2 function of DES Block Cipher.................
@@ -76,11 +83,11 @@ void Des::xor_key(int round, int type)
 
 // Substitution in DES f-function. 6*4 function
 void Des::substitution(){
-	int idx=0;
-	for(int i=0;i<48;i+=8){
-		int s_box_num = i/8,row=xor1[i]<<1+xor1[i+5],col=0; 
+
+	for(int i=0;i<48;i+=6){
+		int s_box_num = i/6,row=(xor1[i]<<1)+xor1[i+5],col=0; 
 		for(int j=1;j<5;j++){
-			col += col<<1+xor1[i+j];
+			col = (col<<1)+xor1[i+j];
 		}
 		int num = round_func::s[s_box_num][row][col];
 		for(int i=0;i<4;i++)
@@ -145,16 +152,14 @@ with additional parameter faulty to run encryption with perturbed s box entry
 Input Text is the plaintext or ciphertext. 
 Output is a unsigned unsigned character stream after running des algorithm
 */
-char * Des::run_des(char *Text,int type, bool faulty = 0)
+char * Des::run_des(const char *Text,int type, bool faulty = 0)
 {
 	int len = strlen(Text);
 	int size = ceil(len*8 / 64.0)*64; // pad stream to nearest multiple of 64 bits.
-	int *Text1 = new int[size],idx=0;
+	int Text1[size]={},idx=0;
 	//convert character stream to bit stream for easy processing
 	for(int i=1;i<=len;i++){
-		//int ch=(i<=len)?(int)Text[i-1]:' ';
 		int ch = Text[i-1];
-		//cout<<ch;//Text[i-1];
 		for(int j=0;j<8;j++){
 			Text1[8*i-j-1]=ch&1;
 			ch>>=1;
@@ -202,15 +207,14 @@ char * Des::run_des(char *Text,int type, bool faulty = 0)
 		}
 	}
 	final[idx++] = '\r',final[idx++]='\n';
-	delete Text1;
 	return(final);
 }
 
-char * Des::Encrypt(char *Text,int faulty){
+char * Des::Encrypt(const char *Text,bool faulty = false){
 	return run_des(Text, ENC, faulty);
 }
 
-char * Des::Decrypt(char *Text){
+char * Des::Decrypt(const char *Text){
 	return run_des(Text, DEC);
 }
 

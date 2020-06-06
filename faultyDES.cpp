@@ -1,26 +1,50 @@
+/*
+This file contains code for mounting Persistent fault analysis attack on a des 
+encryption scheme. 
+For mounting the attack the plain text is encrypted twice-
+1) Using functionally correct S-boxes
+2) Using perturbed S-box at last round
+Then the corresponding ciphertext are compared. The difference in correct ciphertext
+and faulty ciphertext is used to discover the last round key value.
+*/
+
 #include "des.cpp"
 
 // File Exists or not utility function for I/O puposes........
-int cfileexists(char * filename){
+int cfileexists(string filename){
     /* try to open file to read */
-    // FILE *file;
-    // if (file = fopen(filename, "r")){
-    //     fclose(file);
-    //     return 1;
-    // }
+    FILE *file;
+    if (file = fopen(filename.c_str(), "r")){
+        fclose(file);
+        return 1;
+    }
     return 0;
 }
 
+void write_actual_last_rnd_keys(vector<int> actual_key[8])
+{
+	string filename = "actualKey.txt";
+	if (cfileexists(filename))
+		return;
+
+	ofstream myfile(filename);
+	myfile << "Round 16 Actual Keys:\n\n";
+	for (int i = 0; i < 8; i++)
+	{
+		myfile << "Sub-bit " << i << ": ";
+		for (auto it : actual_key[i])
+			myfile << it << " ";
+		myfile << "\n\n";
+	}
+	myfile.close();
+}
+//---------------------------------------------------------
+
 int main()
 {
-	//freopen("output.txt", "w", stdout); // Check outputs in this file..	
+	freopen("output.txt", "w", stdout); // Check outputs in this file..	
 
-	Des d1, d2;
-	//char *str =(char *)"kdsjvsjfdfsiobnbnfvjnfvsfdvfkdlnv";
-	char *str = (char *)"kdsjvsjfdfsiobnbnfvjnfvsfdvfkdlnv\r\n";
-	//cout<<str;
-	char *str1;
-	char *str2;
+	char *plain_text = new char[20000];
 	
 	// Forming a random string......................
 	// Readable ASCII Characters list[A-Z, a-z, 0-9, Symbols] 
@@ -30,35 +54,26 @@ int main()
 	// More is the diversity, more are the chances of attack (In Report).
 	
 	srand(time(0));
-	int tt = 100;
+	int tt = 100,i=0;
 	int totalTrials = tt;
 	int success = 0; // Value out of 100 trails................
-	// for (int i = 0; i < 64; i++) // Using ~20000 as string length....
-	// 	str[i] = (char)((rand() % (upper - lower + 1)) + lower);
-	str1=d1.Encrypt(str,0);
-	cout<<str1<<"*";
-	str2 = d1.Decrypt(str1);cout<<str2;
-	tt=0;
-	return 0;
 	while(tt--){
+		Des d1, d2, d4;
+		for(int i=0;i<19900;) // Using ~20000 as string length....
+			plain_text[i++] = (char)((rand()%(upper-lower+1)) + lower);
+		plain_text[i++]='\r',plain_text[i++]='\n';
 
-		for(int i=0;i<19900;i++) // Using ~20000 as string length....
-			str[i] = (char)((rand()%(upper-lower+1)) + lower);
-		
-		str1 = d1.Encrypt(str, 0); // Without fault
+		d1.Encrypt(plain_text, 0); // Without fault
 
 		// cout<<"Input String :\n"<<str<<"\n";
 		// cout<<"\nOutput Text :\n"<< d2.Decrypt(str1)<< endl;
 		
-		Des d3;
-		str2 = d3.Encrypt(str, 1); // With fault
-
+		d2.Encrypt(plain_text, 1); // With fault
 		int totalPairs = CorrectL.size(); // Total pairs for comparison
 		int xors[32];					// Xors of faulty and Correct R's
 		int cnts[32];
 		int S_Boxes[8];
 
-		Des d4;
 		for(int i=0;i<32;i++)
 			d4.sub[i] = i;			// Customising substitution values so that
 													// inverseIP permutation could be found out..				
@@ -73,23 +88,9 @@ int main()
 				actual_key[i].push_back(d4.keyi[15][6*i + j]); 
 			}
 		}
-		//---------------------------------------------------------
-		if(!cfileexists((char*)"actualKey.txt")){
-			ofstream myfile("actualKey.txt");
-			myfile<<"Round 16 Actual Keys:\n\n";
-
-			for(int i=0;i<8;i++){
-				myfile<<"Sub-bit "<<i<<": ";
-				for(auto it: actual_key[i])
-					myfile<<it<<" ";
-				myfile<<"\n\n";
-			}
-			myfile.close();
-		}
-		//---------------------------------------------------------
-		
+		write_actual_last_rnd_keys(actual_key);
 		vector<vector<int>> predicted_keys[8]; // Storing predicted keys
-																					// for each of 8 sub-bits..
+											// for each of 8 sub-bits..
 
 		for(int i=0; i < totalPairs; i++){
 
@@ -189,7 +190,6 @@ int main()
 	// cout<<"\n";
 	// for(int i=0;i<32;i++)
 	// 	cout<<FaultyR[0][i];
-	//delete str;
-	
+	delete plain_text;
 	return 0;
 }
