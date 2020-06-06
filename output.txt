@@ -28,6 +28,7 @@ Predicted Keys at i = 0 :
 
 0 0 0 0 0 0 0 0 
 
+<<<<<<< HEAD
 0 0 0 0 0 0 0 0 
 
 0 0 0 0 0 0 0 0 
@@ -37,16 +38,25 @@ Predicted Keys at i = 0 :
 0 0 0 0 0 0 0 0 
 
 0 0 0 0 0 0 0 0 
+=======
+1 0 0 0 0 0 0 0 
+Actual Key at i = 0 :
+1 1 0 0 1 0 
+Predicted Keys at i = 0 :
+1 1 0 0 1 0 
+>>>>>>> 52015b99ffff4214384662d0c1dc13b3cfb94964
+
 
 0 0 0 0 0 0 0 0 
 
 0 0 0 0 0 0 0 0 
 
-0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 
+Actual Key at i = 3 :
+0 0 1 0 1 1 
+Predicted Keys at i = 3 :
+0 0 1 0 1 1 
 
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
 
 0 0 0 0 0 0 0 0 
 
@@ -65,8 +75,13 @@ Predicted Keys at i = 0 :
 
 0 0 0 0 0 0 0 0 
 
-0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 
+Actual Key at i = 7 :
+1 1 0 1 0 1 
+Predicted Keys at i = 7 :
+1 1 0 1 0 1 
 
+<<<<<<< HEAD
 1 0 0 0 0 0 0 0 
 Actual Key at i = 0 :
 1 1 0 0 1 0 
@@ -75,6 +90,8 @@ Predicted Keys at i = 0 :
 
 
 0 0 0 0 0 0 0 0 
+=======
+>>>>>>> 52015b99ffff4214384662d0c1dc13b3cfb94964
 
 0 0 0 0 0 0 0 0 
 
@@ -97,7 +114,12 @@ Predicted Keys at i = 6 :
 
 0 0 0 0 0 0 0 0 
 
-0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 
+Actual Key at i = 5 :
+1 0 0 1 0 1 
+Predicted Keys at i = 5 :
+1 0 0 1 0 1 
+
 
 0 0 0 0 0 0 0 0 
 
@@ -116,6 +138,107 @@ Predicted Keys at i = 6 :
 0 0 0 0 0 0 0 0 
 
 0 0 0 0 0 0 0 0 
+
+0 0 0 0 1 0 0 0 
+Actual Key at i = 4 :
+0 0 0 0 1 1 
+Predicted Keys at i = 4 :
+0 0 0 0 1 1 
+
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+<<<<<<< HEAD
+=======
+1 0 0 0 0 0 0 0 
+Actual Key at i = 0 :
+1 1 0 0 1 0 
+Predicted Keys at i = 0 :
+1 1 0 0 1 0 
+
+
+>>>>>>> 52015b99ffff4214384662d0c1dc13b3cfb94964
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+<<<<<<< HEAD
+=======
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+>>>>>>> 52015b99ffff4214384662d0c1dc13b3cfb94964
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 1 0 0 0 
+Actual Key at i = 4 :
+0 0 0 0 1 1 
+Predicted Keys at i = 4 :
+0 0 0 0 1 1 
+
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+<<<<<<< HEAD
+=======
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+>>>>>>> 52015b99ffff4214384662d0c1dc13b3cfb94964
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+
+<<<<<<< HEAD
+0 1 0 0 0 0 0 0 
+Actual Key at i = 1 :
+1 1 0 0 1 1 
+Predicted Keys at i = 1 :
+1 1 0 0 1 1 
+
+=======
+0 0 0 0 0 0 0 1 
+Actual Key at i = 7 :
+1 1 0 1 0 1 
+Predicted Keys at i = 7 :
+1 1 0 1 0 1 
+
+
+0 0 0 0 0 0 0 1 
+Actual Key at i = 7 :
+1 1 0 1 0 1 
+Predicted Keys at i = 7 :
+1 1 0 1 0 1 
+
+
+0 0 0 0 0 0 0 0 
+
+0 0 0 0 0 0 0 0 
+>>>>>>> 52015b99ffff4214384662d0c1dc13b3cfb94964
 
 0 0 0 0 0 0 0 0 
 
@@ -136,17 +259,12 @@ Predicted Keys at i = 3 :
 
 0 0 0 0 0 0 0 0 
 
-0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 
+Actual Key at i = 1 :
+1 1 0 0 1 1 
+Predicted Keys at i = 1 :
+1 1 0 0 1 1 
 
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
 
 0 0 0 0 0 0 0 0 
 
@@ -164,40 +282,6 @@ Actual Key at i = 1 :
 Predicted Keys at i = 1 :
 1 1 0 0 1 1 
 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 1 0 0 0 0 
-Actual Key at i = 3 :
-0 0 1 0 1 1 
-Predicted Keys at i = 3 :
-0 0 1 0 1 1 
-
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 1 0 0 0 0 0 0 
-Actual Key at i = 1 :
-1 1 0 0 1 1 
-Predicted Keys at i = 1 :
-1 1 0 0 1 1 
-
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
 
 0 0 0 0 0 0 0 0 
 
@@ -234,7 +318,12 @@ Predicted Keys at i = 6 :
 
 0 0 0 0 0 0 0 0 
 
-0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 
+Actual Key at i = 6 :
+0 1 1 1 1 1 
+Predicted Keys at i = 6 :
+0 1 1 1 1 1 
+
 
 0 0 0 0 0 0 0 0 
 
@@ -244,11 +333,23 @@ Predicted Keys at i = 6 :
 
 0 0 0 0 0 0 0 0 
 
+<<<<<<< HEAD
 0 0 0 0 0 0 0 0 
+=======
+0 0 0 0 1 0 0 0 
+Actual Key at i = 4 :
+0 0 0 0 1 1 
+Predicted Keys at i = 4 :
+0 0 0 0 1 1 
 
-0 0 0 0 0 0 0 0 
 
-0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 
+Actual Key at i = 5 :
+1 0 0 1 0 1 
+Predicted Keys at i = 5 :
+1 0 0 1 0 1 
+>>>>>>> 52015b99ffff4214384662d0c1dc13b3cfb94964
+
 
 0 0 0 0 0 0 0 0 
 
@@ -260,4 +361,4 @@ Predicted Keys at i = 6 :
 
 0 0 0 0 0 0 0 0 
 ------------
-Success Rate: 12/100
+Success Rate: 16/100

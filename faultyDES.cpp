@@ -66,7 +66,7 @@ int main()
 		d1.Encrypt(plain_text, 0); // Without fault
 
 		// cout<<"Input String :\n"<<str<<"\n";
-		// cout<<"\nOutput Text :\n"<< d2.Decrypt(str1)<< endl;
+		// cout<<"\nDecrypted plain text :\n"<< d2.Decrypt(str1)<< endl;
 		
 		d2.Encrypt(plain_text, 1); // With fault
 		int totalPairs = CorrectL.size(); // Total pairs for comparison
