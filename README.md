@@ -2,6 +2,6 @@
 Persistant Fault Attack on DES Cipher
 
 How to Use:
-1. Compile and Build above faultyDES.cpp
-2. Actual Keys in "actualKey.txt"
-3. Results in "output.txt"
+1. Compile and Build above pfa.cpp
+2. Actual Keys in "IO_files/actualKey.txt"
+3. Results in "IO_files/output.txt"

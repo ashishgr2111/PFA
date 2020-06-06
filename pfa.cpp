@@ -8,7 +8,7 @@ Then the corresponding ciphertext are compared. The difference in correct cipher
 and faulty ciphertext is used to discover the last round key value.
 */
 
-#include "des.cpp"
+#include "DES/des.cpp"
 
 // File Exists or not utility function for I/O puposes........
 int cfileexists(string filename){
@@ -23,7 +23,7 @@ int cfileexists(string filename){
 
 void write_actual_last_rnd_keys(vector<int> actual_key[8])
 {
-	string filename = "actualKey.txt";
+	string filename = "IO_files/actualKey.txt";
 	if (cfileexists(filename))
 		return;
 
@@ -31,7 +31,7 @@ void write_actual_last_rnd_keys(vector<int> actual_key[8])
 	myfile << "Round 16 Actual Keys:\n\n";
 	for (int i = 0; i < 8; i++)
 	{
-		myfile << "Sub-bit " << i << ": ";
+		myfile << "Sub-byte " << i << ": ";
 		for (auto it : actual_key[i])
 			myfile << it << " ";
 		myfile << "\n\n";
@@ -42,7 +42,7 @@ void write_actual_last_rnd_keys(vector<int> actual_key[8])
 
 int main()
 {
-	freopen("output.txt", "w", stdout); // Check outputs in this file..	
+	freopen("IO_files/output.txt", "w", stdout); // Check outputs in this file..	
 
 	char *plain_text = new char[20000];
 	
@@ -160,14 +160,14 @@ int main()
 			if(predicted_keys[i].size()){
 				success++;
 
-				cout<<"\nActual Key at i = "<<i<<" :\n";
+				cout<<"\nActual "<<i<<"th Sub-byte of last round's Key:\n";
 
 				for(int j=0;j<6;j++){
 
 					cout<<actual_key[i][j]<<" ";
 				}
 
-				cout<<"\nPredicted Keys at i = "<<i<<" :\n";
+				cout << "\nPredicted " << i << "th Sub-byte of last round's Key:\n";
 
 				for(auto it: predicted_keys[i]){
 
