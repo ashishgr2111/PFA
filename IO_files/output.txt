@@ -1,268 +1,105 @@
 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-1 0 0 0 0 0 0 0 
-Actual 0th Sub-byte of last round's Key:
-1 1 0 0 1 0 
-Predicted 0th Sub-byte of last round's Key:
-1 1 0 0 1 0 
+Actual 6th Sub-byte of last round's Key:
+0 1 1 1 1 1 
+Predicted 6th Sub-byte of last round's Key:
+0 1 1 1 1 1 
 
 
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-1 0 0 0 0 0 0 0 
-Actual 0th Sub-byte of last round's Key:
-1 1 0 0 1 0 
-Predicted 0th Sub-byte of last round's Key:
-1 1 0 0 1 0 
-
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 1 0 0 0 0 0 
 Actual 2th Sub-byte of last round's Key:
 1 1 0 1 1 0 
 Predicted 2th Sub-byte of last round's Key:
 1 1 0 1 1 0 
 
 
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 1 0 0 0 0 0 0 
-Actual 1th Sub-byte of last round's Key:
-1 1 0 0 1 1 
-Predicted 1th Sub-byte of last round's Key:
-1 1 0 0 1 1 
-
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 1 0 0 0 
-Actual 4th Sub-byte of last round's Key:
-0 0 0 0 1 1 
-Predicted 4th Sub-byte of last round's Key:
-0 0 0 0 1 1 
-
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 1 0 0 
 Actual 5th Sub-byte of last round's Key:
 1 0 0 0 0 1 
 Predicted 5th Sub-byte of last round's Key:
 1 0 0 0 0 1 
 
 
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 1 0 0 0 
-Actual 4th Sub-byte of last round's Key:
-0 0 0 0 1 1 
-Predicted 4th Sub-byte of last round's Key:
-0 0 0 0 1 1 
-
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-1 0 0 0 0 0 0 0 
 Actual 0th Sub-byte of last round's Key:
 1 1 0 0 1 0 
 Predicted 0th Sub-byte of last round's Key:
 1 1 0 0 1 0 
 
 
-0 0 0 0 0 0 1 0 
-Actual 6th Sub-byte of last round's Key:
-0 1 1 1 1 1 
-Predicted 6th Sub-byte of last round's Key:
-0 1 1 1 1 1 
+Actual 2th Sub-byte of last round's Key:
+1 1 0 1 1 0 
+Predicted 2th Sub-byte of last round's Key:
+1 1 0 1 1 0 
 
 
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 1 
 Actual 7th Sub-byte of last round's Key:
 1 1 0 1 0 1 
 Predicted 7th Sub-byte of last round's Key:
 1 1 0 1 0 1 
 
 
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 1 1 0 
-Actual 5th Sub-byte of last round's Key:
-1 0 0 0 0 1 
-Predicted 5th Sub-byte of last round's Key:
-1 0 0 0 0 1 
-
 Actual 6th Sub-byte of last round's Key:
 0 1 1 1 1 1 
 Predicted 6th Sub-byte of last round's Key:
 0 1 1 1 1 1 
 
 
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 0 0 0 0 
-
-0 0 0 0 1 0 0 0 
 Actual 4th Sub-byte of last round's Key:
 0 0 0 0 1 1 
 Predicted 4th Sub-byte of last round's Key:
 0 0 0 0 1 1 
 
+
+Actual 4th Sub-byte of last round's Key:
+0 0 0 0 1 1 
+Predicted 4th Sub-byte of last round's Key:
+0 0 0 0 1 1 
+
+
+Actual 5th Sub-byte of last round's Key:
+1 0 0 0 0 1 
+Predicted 5th Sub-byte of last round's Key:
+1 0 0 0 0 1 
+
+
+Actual 7th Sub-byte of last round's Key:
+1 1 0 1 0 1 
+Predicted 7th Sub-byte of last round's Key:
+1 1 0 1 0 1 
+
+
+Actual 0th Sub-byte of last round's Key:
+1 1 0 0 1 0 
+Predicted 0th Sub-byte of last round's Key:
+1 1 0 0 1 0 
+
+
+Actual 2th Sub-byte of last round's Key:
+1 1 0 1 1 0 
+Predicted 2th Sub-byte of last round's Key:
+1 1 0 1 1 0 
+
+
+Actual 1th Sub-byte of last round's Key:
+1 1 0 0 1 1 
+Predicted 1th Sub-byte of last round's Key:
+1 1 0 0 1 1 
+
+
+Actual 1th Sub-byte of last round's Key:
+1 1 0 0 1 1 
+Predicted 1th Sub-byte of last round's Key:
+1 1 0 0 1 1 
+
+
+Actual 2th Sub-byte of last round's Key:
+1 1 0 1 1 0 
+Predicted 2th Sub-byte of last round's Key:
+1 1 0 1 1 0 
+
+
+Actual 5th Sub-byte of last round's Key:
+1 0 0 0 0 1 
+Predicted 5th Sub-byte of last round's Key:
+1 0 0 0 0 1 
+
+
 ------------
-Success Rate: 13/100
+Success Rate: 17/100

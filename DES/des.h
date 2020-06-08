@@ -3,6 +3,12 @@
 #define char unsigned char
 class Des
 {
+    /*
+    left , right - used to store Left and Right 32 bits parts for each round.
+    expansion, xor1, sub, p - for storing outputs of E-box, key mixing, S-box and Permutation box
+            of round functions.
+    ip, inv_ip - for storing initial perm. and inverse initial perm.
+    */
 public:
     int keyi[16][48], total[64], left[32], right[32], ck[28], dk[28], expansion[48], round_key[48], xor1[48], sub[32], p[32], xor2[32], temp[64],
         pc1[56], ip[64], inv_ip[64];

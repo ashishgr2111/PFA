@@ -44,7 +44,7 @@ int main()
 {
 	freopen("IO_files/output.txt", "w", stdout); // Check outputs in this file..	
 
-	char *plain_text = new char[20000];
+	char *plain_text = new char[3400];
 	
 	// Forming a random string......................
 	// Readable ASCII Characters list[A-Z, a-z, 0-9, Symbols] 
@@ -54,12 +54,11 @@ int main()
 	// More is the diversity, more are the chances of attack (In Report).
 	
 	srand(time(0));
-	int tt = 100,i=0;
-	int totalTrials = tt;
+	int totalTrials = 100;
 	int success = 0; // Value out of 100 trails................
-	while(tt--){
-		Des d1, d2, d4;
-		for(int i=0;i<19900;) // Using ~20000 as string length....
+	for(int tt=0;tt<totalTrials; tt++){
+		Des d1, d2, d4;int i;
+		for(i=0;i<3200;) // Using ~3200 as string length....
 			plain_text[i++] = (char)((rand()%(upper-lower+1)) + lower);
 		plain_text[i++]='\r',plain_text[i++]='\n';
 
@@ -89,7 +88,7 @@ int main()
 			}
 		}
 		write_actual_last_rnd_keys(actual_key);
-		vector<vector<int>> predicted_keys[8]; // Storing predicted keys
+		vector<int> predicted_keys[8]; // Storing predicted keys
 											// for each of 8 sub-bits..
 
 		for(int i=0; i < totalPairs; i++){
@@ -110,51 +109,16 @@ int main()
 
 				for(int k=0 ; k<=3 ; k++){
 
-					if(cnts[4*j + k]){ // Check if any of the 4 bits is 1.
+					if(cnts[4*j + k] && !predicted_keys[j].size()){ // Check if any of the 4 bits is 1.
 
-						vector<int> result;
-
-						for(int ind = 0; ind<6; ind++){
-
-							result.push_back(d4.expansion[6*j + ind]); // KEY FOUND!!!
-						}
-
-						if(predicted_keys[j].size()){   // Check if found previously
-																					// for non redundant storage..
-
-							int anyEqual = 0;
-							
-							for(auto it: predicted_keys[j]){
-								int ind = 0;
-								for(; ind<6; ind++){
-									if(it[ind] != result[ind]){
-										break;
-									}
-								}
-
-								if(ind==6){
-									anyEqual = 1;
-									break;
-								}
-							}
-
-							if(!anyEqual){					// If not found, then push_back...
-								predicted_keys[j].push_back(result);
-							}
-						}
-
-						else{
-							predicted_keys[j].push_back(result);
-						}
+						for(int ind = 0; ind<6; ind++)
+							predicted_keys[j].push_back(d4.expansion[6*j + ind]);
+						
 						break;
 					}
 				}
 			}
 		}
-
-		cout<<"\n\n";
-		for(int i=0;i<8;i++)
-			cout<<predicted_keys[i].size()<<" ";
 
 		for(int i=0;i<8;i++){
 			if(predicted_keys[i].size()){
@@ -170,13 +134,9 @@ int main()
 				cout << "\nPredicted " << i << "th Sub-byte of last round's Key:\n";
 
 				for(auto it: predicted_keys[i]){
-
-					for(int j=0;j<6;j++){
-
-						cout<<it[j]<<" ";
-					}
-					cout<<"\n";
+					cout<<it<<" ";
 				}
+				cout<<"\n\n";
 			}
 		}
 	}
