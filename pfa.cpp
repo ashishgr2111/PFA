@@ -57,6 +57,8 @@ int main()
 	int totalTrials = 100;
 	int success = 0; // Value out of 100 trails................
 	for(int tt=0;tt<totalTrials; tt++){
+		CorrectL.clear();CorrectR.clear();
+		FaultyL.clear();FaultyR.clear();
 		Des d1, d2, d4;int i;
 		for(i=0;i<3200;) // Using ~3200 as string length....
 			plain_text[i++] = (char)((rand()%(upper-lower+1)) + lower);
